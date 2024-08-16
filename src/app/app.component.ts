@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {DeviceFingerprintService} from "./device-fingerprint-service.service";
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'fingerprint';
+
+  fingerprint: string;
+
+  constructor(private deviceFingerprintService: DeviceFingerprintService) {
+    this.fingerprint = this.deviceFingerprintService.getDeviceFingerprint();
+    alert(this.fingerprint)
+  }
 }
